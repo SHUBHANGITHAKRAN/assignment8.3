@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 8.3 - Magazine Layout</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="magazine-container">
+    
+    <!-- 1. Header Section -->
+    <header class="header">
+      <h1>THE DAILY CHRONICLE</h1>
+      <p class="subtitle">Issue #104 — Your Weekly Tech & Life Magazine</p>
+    </header>
+
+    <!-- 2. Navigation Section -->
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">Technology</a>
+      <a href="#">Design</a>
+      <a href="#">Culture</a>
+      <a href="#">Opinion</a>
+    </nav>
+
+    <!-- 3. Main Article Section -->
+    <main class="main-article">
+      <article>
+        <h2>The Future of Web Layouts: CSS Grid Mastery</h2>
+        <p class="meta">Published on October 25, 2026 | By Alex Rivers</p>
+        <div class="featured-image">Featured Article Banner</div>
+        <p>
+          CSS Grid has revolutionized the way modern websites are built. By using modern grid features like <code>grid-template-areas</code>, developers can write clean, declarative layout instructions directly within CSS.
+        </p>
+        <p>
+          Unlike older float methods or rigid flexbox columns, CSS Grid lets you control both rows and columns simultaneously. This makes magazine-style dynamic multi-column layouts clean, responsive, and maintainable.
+        </p>
+      </article>
+    </main>
+
+    <!-- 4. Sidebar Section -->
+    <aside class="sidebar">
+      <div class="widget">
+        <h3>Trending Topics</h3>
+        <ul>
+          <li><a href="#">AI in Web Development</a></li>
+          <li><a href="#">Minimalist Design Trends</a></li>
+          <li><a href="#">Responsive Typography</a></li>
+        </ul>
+      </div>
+      <div class="widget highlight-box">
+        <h3>Subscribe Today</h3>
+        <p>Get exclusive weekly issues delivered straight to your inbox.</p>
+        <button type="button">Subscribe</button>
+      </div>
+    </aside>
+
+    <!-- 5. Footer Section -->
+    <footer class="footer">
+      <p>&copy; 2026 The Daily Chronicle. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
+2. CSS (style.css)
+CSS
+/* Base Resets and Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background-color: #f4f1ea;
+  color: #222;
+  padding: 20px;
+}
+
+/* ===================================================
+   GRID CONTAINER & AREA DEFINITIONS
+   =================================================== */
+
+.magazine-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+
+  /* Step 5: Main article (3fr) gets much more space than sidebar (1fr) */
+  grid-template-columns: 3fr 1fr;
+
+  /* Step 3: Define layout structure using grid-template-areas */
+  grid-template-areas:
+    "header  header"
+    "nav     nav"
+    "main    sidebar"
+    "footer  footer";
+}
+
+/* Step 4: Assign named grid areas to each section */
+.header {
+  grid-area: header;
+  text-align: center;
+  padding: 30px 10px;
+  background-color: #1a1a1a;
+  color: #fff;
+  border-bottom: 4px solid #b83227;
+}
+
+.nav {
+  grid-area: nav;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  background-color: #e0dad1;
+  padding: 12px;
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.main-article {
+  grid-area: main;
+  background-color: #ffffff;
+  padding: 25px;
+  border: 1px solid #ddd;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer {
+  grid-area: footer;
+  text-align: center;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #ccc;
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+}
+
+/* Content Styling */
+.header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+
+.header .subtitle {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #aaa;
+  margin-top: 5px;
+}
+
+.nav a {
+  color: #222;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #b83227;
+}
+
+.main-article h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.main-article .meta {
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.featured-image {
+  background-color: #d1cbc1;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.main-article p {
+  line-height: 1.7;
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+}
+
+.widget {
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.widget h3 {
+  font-family: Arial, sans-serif;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #b83227;
+  padding-bottom: 5px;
+  margin-bottom: 12px;
+}
+
+.widget ul {
+  list-style: none;
+}
+
+.widget ul li {
+  margin-bottom: 8px;
+}
+
+.widget ul li a {
+  color: #222;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+}
+
+.widget ul li a:hover {
+  text-decoration: underline;
+}
+
+.highlight-box {
+  background-color: #f2e9e1;
+  border-color: #d8c3b2;
+}
+
+.highlight-box button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #b83227;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.highlight-box button:hover {
+  background-color: #96281f;
+}
+
+/* Step 6: Test responsive layout adjustment for smaller screens */
+@media (max-width: 768px) {
+  .magazine-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "sidebar"
+      "footer";
+  }
+}
+Step-by-Step Checklist Verification
+Header, Nav, Main Article, Sidebar, Footer Created: Structured semantically in the HTML.
+
+Grid Container Defined: .magazine-container set to display: grid.
+
+grid-template-areas Set: Layout defined cleanly with template strings mapping out columns and rows.
+
+Named Grid Areas Assigned: grid-area: header, grid-area: nav, grid-area: main, grid-area: sidebar, and grid-area: footer.
+
+Main Article Larger Than Sidebar: grid-template-columns: 3fr 1fr; ensures the main content area occupies 75% of the main row width, giving it far more space than the sidebar (25%).
+
+Tested Sizes & Alignments: Added responsive media queries so the grid area stack automatically converts to a single column on tablet/mobile screens.
